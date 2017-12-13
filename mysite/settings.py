@@ -25,7 +25,7 @@ SECRET_KEY = '6_xp3glf+da4%zfsefl@2!3!_eulyro62kk7v0kn%i1=uolkz!'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'toeka.pythonanywhere.com']
 
 
 # Application definition
