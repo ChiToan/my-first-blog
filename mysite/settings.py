@@ -25,7 +25,7 @@ SECRET_KEY = '6_xp3glf+da4%zfsefl@2!3!_eulyro62kk7v0kn%i1=uolkz!'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'toeka.pythonanywhere.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'toeka.pythonanywhere.com', 'localhost']
 
 
 # Application definition
@@ -114,6 +114,7 @@ USE_L10N = True
 
 USE_TZ = True
 
+LOGIN_REDIRECT_URL = 'home'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
