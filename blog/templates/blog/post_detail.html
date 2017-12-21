@@ -4,22 +4,23 @@
     <div class="custom-card">
         <h4>Author</h4>
         {{ post.author }}
-
     </div>
 {% endblock %}
 
 {% block content %}
-    <div class="post custom-card">
-        <h1>{{ post.title }}
-            {% if user.issuperuser or user == post.author%}
-                <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
-            {% endif %}</h1>
-        {% if post.published_date %}
-            <div class="date">
-                {{ post.published_date }}
-            </div>
-        {% endif %}
-        <br>
-        <div>{{ post.text|linebreaksbr }}</div>
+    <div class="post col-md-12">
+        <div class="card custom-card">
+            <h2>{{ post.title }}
+                {% if user.issuperuser or user == post.author%}
+                    <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+                {% endif %}</h2>
+            {% if post.published_date %}
+                <div class="date">
+                    {{ post.published_date }}
+                </div>
+            {% endif %}
+            <br>
+            <div>{{ post.text|linebreaksbr }}</div>
+        </div>
     </div>
 {% endblock %}
