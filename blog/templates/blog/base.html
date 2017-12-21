@@ -15,7 +15,7 @@
         </div>
         <ul class="nav navbar-nav navbar-right">
             {% if user.is_authenticated %}
-                <li><a href="{% url 'post_new' %}" class="nav-item "><span class="glyphicon glyphicon-plus"></span></a></h3>
+                <li><a href="{% url 'post_new' %}" class="nav-item "><span class="glyphicon glyphicon-plus"></span></a></li>
                 <li><a href="{% url 'logout' %}" class="nav-item ">Logout <span class="glyphicon glyphicon-log-out"></span></a></li>
             {% else %}
                 <li><a href="{% url 'signup' %}" class="nav-item "><span class="glyphicon glyphicon-user"></span> Sign Up </a></li>
@@ -26,7 +26,13 @@
 </nav>
 <div class="content container text-center">
     <div class="row">
-        <div class="col-md-12 text-left">
+        {% if user.is_authenticated %}
+            <div class="col-xs-12 col-md-3">
+                {% block profile %}
+                {% endblock %}
+            </div>
+        {% endif %}
+        <div class="col-xs-12 col-md-9 text-left">
             {% block content %}
             {% endblock %}
         </div>

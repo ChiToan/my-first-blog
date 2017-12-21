@@ -1,5 +1,13 @@
 {% extends 'blog/base.html' %}
 
+{% block profile %}
+    <div class="custom-card">
+        <h4>Author</h4>
+        {{ post.author }}
+
+    </div>
+{% endblock %}
+
 {% block content %}
     <div class="post custom-card">
         <h1>{{ post.title }}
@@ -8,8 +16,6 @@
             {% endif %}</h1>
         {% if post.published_date %}
             <div class="date">
-                {{ post.author }}
-                -
                 {{ post.published_date }}
             </div>
         {% endif %}

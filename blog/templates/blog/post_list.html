@@ -1,16 +1,26 @@
 {% extends 'blog/base.html' %}
 
+{% block profile %}
+    <div class="custom-card">
+        <h4>Your profile</h4>
+        {{ user }}
+
+    </div>
+{% endblock %}
+
 {% block content %}
     {% for post in posts %}
-        <div class="post custom-card">
-            <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
-			<div class="date text-left">
-                {{ post.author }}
-                  -
-                {{ post.published_date }}
+        <div class="post col-md-6">
+            <div class="card custom-card">
+                <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+                <div class="date text-left">
+                    {{ post.author }}
+                    -
+                    {{ post.published_date }}
+                </div>
+                <br>
+                <p>{{ post.text|linebreaksbr }}</p>
             </div>
-            <br>
-            <p>{{ post.text|linebreaksbr }}</p>
         </div>
     {% endfor %}
 {% endblock %}
