@@ -1,29 +1,36 @@
 {% load staticfiles %}
 <html>
-    <head>
-        <title>Dwem+</title>
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-        <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
-    </head>
-    <body>
-    <div class="page-header">
-		{% if user.is_authenticated %}
-			<a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
-		{% endif %}
-        <h1><a href="/">Dwem+</a></h1>
+<head>
+    <title>Dwem+</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+</head>
+<body>
+<nav class="navbar navbar-background">
+    <div class="container text-center">
+        <div class="navbar-header">
+            <a class="text-xs-center navbar-brand" href="/">Dwem+</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'post_new' %}" class="nav-item "><span class="glyphicon glyphicon-plus"></span></a></h3>
+                <li><a href="{% url 'logout' %}" class="nav-item ">Logout <span class="glyphicon glyphicon-log-out"></span></a></li>
+            {% else %}
+                <li><a href="{% url 'signup' %}" class="nav-item "><span class="glyphicon glyphicon-user"></span> Sign Up </a></li>
+                <li><a href="{% url 'login' %}" class="nav-item "><span class="glyphicon glyphicon-log-in"></span> Login </a></li>
+            {% endif %}
+        </ul>
     </div>
-		<div class="content container">
-			<div class="row">
-				<div class="col-md-4">
-
-				</div>
-				<div class="col-md-8">
-				{% block content %}
-				{% endblock %}
-				</div>
-			</div>
-		</div>
-	</body>
+</nav>
+<div class="content container text-center">
+    <div class="row">
+        <div class="col-md-12 text-left">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+</div>
+</body>
 </html>

@@ -10,6 +10,6 @@ urlpatterns = [
 	url(r'^post/(?P<pk>\d+)/edit/$', views.post_edit, name='post_edit'),
     url(r'^post/new/$', views.post_new, name='post_new'),
     url(r'^signup/$', core_views.signup, name='signup'),
-    url(r'^login/$', auth_views.login, {'template_name': 'login.html'}, name='login'),
-    url(r'^logout/$', auth_views.logout, name='logout'),
+    url(r'^login/$', auth_views.login, {'template_name': 'blog/login.html'}, name='login'),
+    url(r'^logout/$', auth_views.logout, {'next_page': '/'}, name='logout'),
 ]
