@@ -1,11 +1,18 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
+from rest_framework import viewsets
+
+from blog.serializers import PostSerializer
 from .models import Post, Profile
 from .forms import PostForm, ProfileForm
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.db import transaction
 from django.contrib import messages
+
+class PostViewSet(viewsets.ModelViewSet):
+    queryset = Post.objects.all().order_by('-published_date')
+    serializer_class = PostSerializer
 
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
