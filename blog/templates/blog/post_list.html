@@ -1,26 +1,18 @@
 {% extends 'blog/base.html' %}
 
 {% block profile %}
+    <div class="custom-card">
+        <h4>Your profile</h4>
+        {{ user }}
 
-    {% if user.is_authenticated %}
-        <div class="custom-card">
-            <h5>My profile</h5>
-            <h4>{{ user.profile.user }}</h4>
-            <h8>Bio:</h8>
-            <br/>
-            {{ user.profile.bio }}
-            <br/>
-            <br>
-            <button><a href="{% url 'edit profile' %}" class="nav-item "><span class="glyphicon glyphicon-edit"></span> Edit bio </a></button>
-        </div>
-    {% endif %}
+    </div>
 {% endblock %}
 
 {% block content %}
     {% for post in posts %}
         <div class="post col-md-6">
             <div class="card custom-card">
-                <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+                <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
                 <div class="date text-left">
                     {{ post.author }}
                     -

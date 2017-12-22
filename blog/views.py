@@ -3,12 +3,10 @@ from django.utils import timezone
 from rest_framework import viewsets
 
 from blog.serializers import PostSerializer
-from .models import Post, Profile
-from .forms import PostForm, ProfileForm
+from .models import Post
+from .forms import PostForm
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
-from django.db import transaction
-from django.contrib import messages
 
 class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all().order_by('-published_date')
@@ -62,18 +60,3 @@ def signup(request):
     else:
         form = UserCreationForm()
     return render(request, 'blog/signup.html', {'form': form})
-
-@transaction.atomic
-def update_profile(request):
-    if request.method == 'POST':
-        profile_form = ProfileForm(request.POST, instance=request.user.profile or None)
-        if profile_form.is_valid():
-            profile_form.user=request.user
-            profile_form.save()
-            messages.success(request, ('Your profile was successfully updated!'))
-            return redirect('/')
-        else:
-            messages.error(request, ('Please correct the error below.'))
-    else:
-        profile_form = ProfileForm(instance=request.user.profile)
-    return render(request, 'blog/edit_profile.html', {'profile_form': profile_form})

@@ -109,7 +109,7 @@ LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'Europe/Berlin'
 
-TIME_FORMAT = 'p'
+TIME_FORMAT = ''
 
 USE_I18N = True
 
@@ -117,9 +117,7 @@ USE_L10N = False
 
 USE_TZ = True
 
-AUTH_PROFILE_MODULE = "account.UserProfile"
-
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = 'home'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
